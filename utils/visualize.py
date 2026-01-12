@@ -7,7 +7,7 @@ import matplotlib.patches as patches
 
 from sklearn.decomposition import PCA
 
-def plot_encoded_data(X_encoded, y_predicted, y_true, N_classes, title = "", output = "clustering", X_raw = None, show_images = False, verbosity = 1, subset = None, prototypes = None, devs = None):
+def plot_encoded_data(X_encoded, y_predicted, y_true, N_classes=None, title = "", output = "clustering", X_raw = None, show_images = False, verbosity = 1, subset = None, prototypes = None, devs = None):
 
     plt.cla()
     plt.clf()
@@ -38,6 +38,9 @@ def plot_encoded_data(X_encoded, y_predicted, y_true, N_classes, title = "", out
     max0 += size0*p
     min1 -= size1*p
     max1 += size1*p
+
+    if N_classes is None:
+        N_classes = len(np.unique(y_true))
 
     if subset is None:
         colors = cm.nipy_spectral(np.linspace(0, 1, N_classes))

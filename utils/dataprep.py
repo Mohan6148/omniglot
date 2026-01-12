@@ -1,7 +1,6 @@
 #data preparation utils
 
 import numpy as np
-import tensorflow as tf
 
 def partitionByClass(X,y_true):
     maxc = np.max(y_true+1)
@@ -38,8 +37,10 @@ def deinvert_img(x):
     return 1.0 - 0.5 * x
 
 def resize_img(x,Hold,Wold,Hnew,Wnew):
-    q = tf.Session().run(tf.image.resize_images(tf.reshape(x,[-1,Hold,Wold,1]),[Hnew,Wnew]))
-    return np.reshape(q,[-1,Hnew,Wnew])
+    import tensorflow as tf
+    x_reshaped = tf.reshape(x, [-1, Hold, Wold, 1])
+    x_resized = tf.image.resize(x_reshaped, [Hnew, Wnew])
+    return tf.reshape(x_resized, [-1, Hnew, Wnew]).numpy()
 
 def subtract_mean(X):
     N,H,W = np.shape(X)

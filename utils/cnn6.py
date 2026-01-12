@@ -1,4 +1,6 @@
-import tensorflow as tf
+# Enable TensorFlow 1.x compatibility mode for TensorFlow 2.x
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 import numpy as np
 import matplotlib.pyplot as plt
 

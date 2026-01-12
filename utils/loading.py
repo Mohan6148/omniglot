@@ -3,7 +3,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-from visualize import visualize
+from utils.visualize import visualize
 
 def loadList(path, list_name, limit = None, verbose = False):
 
@@ -40,7 +40,7 @@ def loadList(path, list_name, limit = None, verbose = False):
         if verbose:
             print(img_filename)
 
-        im = plt.imread(img_filename, format='png')
+        im = plt.imread(img_filename)
 
         im = np.array(im)
 
