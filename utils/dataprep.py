@@ -37,10 +37,14 @@ def deinvert_img(x):
     return 1.0 - 0.5 * x
 
 def resize_img(x,Hold,Wold,Hnew,Wnew):
-    import tensorflow as tf
+    import tensorflow.compat.v1 as tf
+    tf.disable_v2_behavior()
     x_reshaped = tf.reshape(x, [-1, Hold, Wold, 1])
     x_resized = tf.image.resize(x_reshaped, [Hnew, Wnew])
-    return tf.reshape(x_resized, [-1, Hnew, Wnew]).numpy()
+    x_final = tf.reshape(x_resized, [-1, Hnew, Wnew])
+    with tf.Session() as sess:
+        result = sess.run(x_final)
+    return result
 
 def subtract_mean(X):
     N,H,W = np.shape(X)

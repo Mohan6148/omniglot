@@ -405,7 +405,7 @@ def runModel(session, y_predicted, loss, class_ids_ph, X_data, y_data, X_support
                     plt.clf()
                     plt.close()
 
-                    plt.title("Off-diagonal terms of $\Sigma$s")
+                    plt.title(r"Off-diagonal terms of $\Sigma$s")
                     plt.hist(off_diagonals, bins=30)  # arguments are passed to np.histogram
                     filename = "tmp_imgs/"+str(checkpoint_name)+sigma_mode+"_sigma_offdiagonal_"+str(e)+"_i"+str(i)
                     plt.savefig(filename+".png", bbox_inches='tight', format='png', dpi=300)
@@ -415,7 +415,7 @@ def runModel(session, y_predicted, loss, class_ids_ph, X_data, y_data, X_support
                     plt.clf()
                     plt.close()
 
-                    plt.title("Diagonal terms of $\Sigma$s")
+                    plt.title(r"Diagonal terms of $\Sigma$s")
                     plt.hist(diagonals, bins=30)  # arguments are passed to np.histogram
                     filename = "tmp_imgs/"+str(checkpoint_name)+sigma_mode+"_sigma_diagonal_"+str(e)+"_i"+str(i)
                     plt.savefig(filename+".png", bbox_inches='tight', format='png', dpi=300)
@@ -430,7 +430,7 @@ def runModel(session, y_predicted, loss, class_ids_ph, X_data, y_data, X_support
                     plt.clf()
                     plt.close()
 
-                    plt.title("Terms of $\Sigma$s")
+                    plt.title(r"Terms of $\Sigma$s")
                     plt.hist(terms, bins=30)  # arguments are passed to np.histogram
                     filename = "tmp_imgs/"+str(checkpoint_name)+sigma_mode+"_sigmas_"+str(e)+"_i"+str(i)
                     plt.savefig(filename+".png", bbox_inches='tight', format='png', dpi=300)
